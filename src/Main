@@ -1,6 +1,6 @@
 public class Main {
     static public void main (String[]arg){
-        Goblin g=new Goblin();
+
         Warrior w= new Warrior();
 
 
@@ -8,6 +8,7 @@ public class Main {
         int round=0;
 
         while(w.get_health()>0){
+            Goblin g=new Goblin();
 
             while (g.get_health()>0){
 
@@ -17,10 +18,11 @@ public class Main {
                 round+=1;
             }
             dead+=1;
-            g.set_health(20);
+           
         }
 
-        System.out.println("Amount of rounds: "+round);
+        System.out.println("One dead goblin-amount of rounds: "+(round/dead));
+        System.out.println("Total amount of rounds: "+round);
         System.out.println("Amount of dead goblins: "+dead);
     }
 }
