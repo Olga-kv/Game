@@ -1,0 +1,26 @@
+public class Main {
+    static public void main (String[]arg){
+        Goblin g=new Goblin();
+        Warrior w= new Warrior();
+
+
+        int dead=0;
+        int round=0;
+
+        while(w.get_health()>0){
+
+            while (g.get_health()>0){
+
+
+                g.set_health(g.get_health()-g.get_powerOfAttack()+g.get_armorPlating());
+                w.set_health(w.get_health()-w.get_powerOfAttack()+w.get_armorPlating());
+                round+=1;
+            }
+            dead+=1;
+            g.set_health(20);
+        }
+
+        System.out.println("Amount of rounds: "+round);
+        System.out.println("Amount of dead goblins: "+dead);
+    }
+}
