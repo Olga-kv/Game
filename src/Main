@@ -5,24 +5,32 @@ public class Main {
 
 
         int dead=0;
-        int round=0;
+        int step=0;
 
         while(w.get_health()>0){
             Goblin g=new Goblin();
 
             while (g.get_health()>0){
 
+                if((step%5)==0) {
+                   w.set_health(w.get_health() - g.get_powerOfAttack() + w.get_armorPlating());
+                   w.set_health(w.get_health()+5);
+                   step+=1;
+                }
 
-                g.set_health(g.get_health()-g.get_powerOfAttack()+g.get_armorPlating());
-                w.set_health(w.get_health()-w.get_powerOfAttack()+w.get_armorPlating());
-                round+=1;
+                else {
+                    g.set_health(g.get_health() - w.get_powerOfAttack() + g.get_armorPlating());
+                    w.set_health(w.get_health() - g.get_powerOfAttack() + w.get_armorPlating());
+                    step += 1;
+                }
+
             }
             dead+=1;
-           
+
         }
 
-        System.out.println("One dead goblin-amount of rounds: "+(round/dead));
-        System.out.println("Total amount of rounds: "+round);
+        System.out.println("One dead goblin-amount of steps: "+(step/dead));
+       // System.out.println("Total amount of rounds: "+round);
         System.out.println("Amount of dead goblins: "+dead);
     }
 }
